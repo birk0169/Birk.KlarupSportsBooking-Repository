@@ -48,11 +48,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivityHandler.cs" />
+    <Compile Include="BaseHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Birk.KlarupSportsBooking.DAL\Birk.KlarupSportsBooking.DAL.csproj">
+      <Project>{e32060a5-1def-4a84-93ef-4c80aab909ea}</Project>
+      <Name>Birk.KlarupSportsBooking.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
