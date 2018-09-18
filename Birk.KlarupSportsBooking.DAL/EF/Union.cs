@@ -25,6 +25,10 @@ namespace Birk.KlarupSportsBooking.DAL.EF
         [StringLength(50)]
         public string Email { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Password { get; set; }
+
         public int AddressId { get; set; }
 
         public virtual Address Address { get; set; }
