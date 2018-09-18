@@ -42,9 +42,22 @@ namespace Birk.KlarupSportsBooking.WPF
             
         }
 
+        public void ResetReservationUser()
+        {
+            dpReservationDateUser.Text = "";
+            tbxReservationHourUser.Text = "";
+            tbxReservationDurationUser.Text = "";
+            dgActivitiesUser.SelectedItem = null;
+        }
+
+        //Buttons
         private void btnAddNewReservationUser_Click(object sender, RoutedEventArgs e)
         {
-            
+            bool isFixed = false;
+            if (ckxFixed.IsChecked == true)
+            {
+                isFixed = true;
+            }
 
             //Validation
             if (cbxUnionUser.SelectedItem == null)
@@ -63,12 +76,20 @@ namespace Birk.KlarupSportsBooking.WPF
             {
                 tbkErrorMessageUser.Text = "Den reseverings tid er ugyldtig";
             }
-            
+            else if (isFixed && !DateTime.TryParse(dpFixedReservationStartUser, out dateTime))
+            {
+                tbkErrorMessageUser.Text = "Den faste resevations perioden er ugyldigt";
+            }
+            else if (isFixed && !DateTime.TryParse(dpFixedReservationEndUser, out dateTime))
+            {
+                tbkErrorMessageUser.Text = "Den faste resevations perioden er ugyldigt";
+            }
+            else if (isFixed && !(dpFixedReservationStartUser < dpFixedReservationEndUser))
+            {
+                tbkErrorMessageUser.Text = "Den faste resevations perioden er ugyldigt: En periode kan ikke starte før den skal slutte...";
+            }
             else
             {
-
-                
-
                 DateTime selectedTimeFrom = DateTime.Parse(dpReservationDateUser.Text).AddHours(double.Parse(tbxReservationHourUser.Text));
                 //selectedTimeFrom.AddHours(double.Parse(tbxReservationHourUser.Text));
 
@@ -83,21 +104,31 @@ namespace Birk.KlarupSportsBooking.WPF
                     openFrom = 9;
                     openTo = 21;
                 }
-
+                
                 if (selectedTimeFrom.Hour >= openFrom && selectedTimeTo.Hour <= openTo)
                 {
                     Activity selectedActivity = dgActivitiesUser.SelectedItem as Activity;
 
                     Union selectedUnion = cbxUnionUser.SelectedItem as Union;
 
-                    Reservation newReservation = new Reservation(selectedTimeFrom, selectedTimeTo, false, selectedUnion, selectedActivity);
+                    Reservation newReservation = new Reservation(selectedTimeFrom, selectedTimeTo, isFixed, selectedUnion, selectedActivity);
+                    if (isFixed)
+                    {
+                        Fixed fixedReservation = new Fixed()
+                        {
+                            PeriodStart = DateTime.Parse(dpFixedReservationStartUser),
+                            PeriodEnd = DateTime.Parse(dpFixedReservationEndUser)
+                        };
+                        newReservation.Fixeds.Add(fixedReservation);
+                    }
 
-                    
-                    
+
                     try
                     {
+                        //Adds reservation to the database
                         reservationHandler.AddReservationToDB(newReservation);
-                        tbkErrorMessageUser.Text = "It worked!!";
+                        ResetReservationUser();
+                        
                     }
                     catch
                     {
@@ -109,10 +140,10 @@ namespace Birk.KlarupSportsBooking.WPF
                 {
                     tbkErrorMessageUser.Text = "Tiden er fokert: Hallen har åbent fra 8 til 22 i hverdagene og fra 9 til 21 i weekenderne";
                 }
-
-                
             }
             
+
+            //End
         }
     }
 }

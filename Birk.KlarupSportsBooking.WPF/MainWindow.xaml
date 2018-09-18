@@ -43,6 +43,11 @@
                     <Label Content="Reseveringstid:" HorizontalAlignment="Left" Margin="478,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.37,0.664" FontWeight="Bold"/>
                     <TextBox x:Name="tbxReservationDurationUser" HorizontalAlignment="Left" Height="23" Margin="586,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
                     <Label Content="I timer" HorizontalAlignment="Left" Margin="624,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.504,0.095"/>
+                    <CheckBox x:Name="ckxFixed" Content="Er bookningen fast" HorizontalAlignment="Left" Margin="344,160,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Start periode" HorizontalAlignment="Left" Margin="303,194,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Slut periode" HorizontalAlignment="Left" Margin="303,225,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="dpFixedReservationStartUser" HorizontalAlignment="Left" Margin="386,195,0,0" VerticalAlignment="Top" Width="75"/>
+                    <DatePicker x:Name="dpFixedReservationEndUser" HorizontalAlignment="Left" Margin="386,227,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Administration">
