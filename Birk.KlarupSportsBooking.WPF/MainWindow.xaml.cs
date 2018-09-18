@@ -76,15 +76,15 @@ namespace Birk.KlarupSportsBooking.WPF
             {
                 tbkErrorMessageUser.Text = "Den reseverings tid er ugyldtig";
             }
-            else if (isFixed && !DateTime.TryParse(dpFixedReservationStartUser, out dateTime))
+            else if (isFixed && !DateTime.TryParse(dpFixedReservationStartUser.Text, out dateTime))
             {
                 tbkErrorMessageUser.Text = "Den faste resevations perioden er ugyldigt";
             }
-            else if (isFixed && !DateTime.TryParse(dpFixedReservationEndUser, out dateTime))
+            else if (isFixed && !DateTime.TryParse(dpFixedReservationEndUser.Text, out dateTime))
             {
                 tbkErrorMessageUser.Text = "Den faste resevations perioden er ugyldigt";
             }
-            else if (isFixed && !(dpFixedReservationStartUser < dpFixedReservationEndUser))
+            else if (isFixed && !(DateTime.Parse(dpFixedReservationStartUser.Text) < DateTime.Parse(dpFixedReservationEndUser.Text)))
             {
                 tbkErrorMessageUser.Text = "Den faste resevations perioden er ugyldigt: En periode kan ikke starte før den skal slutte...";
             }
@@ -116,13 +116,12 @@ namespace Birk.KlarupSportsBooking.WPF
                     {
                         Fixed fixedReservation = new Fixed()
                         {
-                            PeriodStart = DateTime.Parse(dpFixedReservationStartUser),
-                            PeriodEnd = DateTime.Parse(dpFixedReservationEndUser)
+                            PeriodStart = DateTime.Parse(dpFixedReservationStartUser.Text),
+                            PeriodEnd = DateTime.Parse(dpFixedReservationEndUser.Text)
                         };
                         newReservation.Fixeds.Add(fixedReservation);
                     }
-
-
+                    
                     try
                     {
                         //Adds reservation to the database
