@@ -59,6 +59,9 @@
     <Compile Include="EF\Reservation.cs" />
     <Compile Include="EF\Union.cs" />
     <Compile Include="EF\UnionLeader.cs" />
+    <Compile Include="PartialEntities\Activity.cs" />
+    <Compile Include="PartialEntities\Address.cs" />
+    <Compile Include="PartialEntities\Union.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

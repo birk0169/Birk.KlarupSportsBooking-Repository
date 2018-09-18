@@ -49,8 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityHandler.cs" />
+    <Compile Include="AdminHandler.cs" />
     <Compile Include="BaseHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservationHandler.cs" />
+    <Compile Include="UnionHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
