@@ -7,7 +7,7 @@ using Birk.KlarupSportsBooking.DAL.EF;
 
 namespace Birk.KlarupSportsBooking.BIZ
 {
-    class ReservationHandler : BaseHandler
+    public class ReservationHandler : BaseHandler
     {
         //Get
         /// <summary>
@@ -20,11 +20,19 @@ namespace Birk.KlarupSportsBooking.BIZ
         }
 
         //Add
+        /// <summary>
+        /// Adds a reservation to the DB
+        /// </summary>
+        /// <param name="reservation"></param>
         public void AddReservationToDB(Reservation reservation)
         {
-            if (reservation == null)
+            if (reservation == null || (reservation.Union == null && reservation.UnionId == 0))
             {
-
+                throw new ArgumentNullException();
+            }
+            else if (reservation.Activity == null && reservation.ActivityId == 0)
+            {
+                throw new ArgumentNullException();
             }
             else
             {

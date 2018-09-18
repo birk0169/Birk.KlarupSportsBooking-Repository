@@ -51,6 +51,7 @@
     <Compile Include="ActivityHandler.cs" />
     <Compile Include="AdminHandler.cs" />
     <Compile Include="BaseHandler.cs" />
+    <Compile Include="BookingHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservationHandler.cs" />
     <Compile Include="UnionHandler.cs" />

@@ -17,6 +17,8 @@ namespace Birk.KlarupSportsBooking.DAL.EF
         {
             ActivityName = activityName;
             HallSpace = hallSpace;
+            Bookings = new HashSet<Booking>();
+            Reservations = new HashSet<Reservation>();
         }
         
     }

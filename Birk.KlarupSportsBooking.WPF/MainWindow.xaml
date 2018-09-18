@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Birk.KlarupSportsBooking.WPF"
         mc:Ignorable="d"
-        Title="Klarrup Halbooking" Height="450" Width="800">
+        Title="Klarrup Halbooking" Height="550" Width="800">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="399" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
+        <TabControl HorizontalAlignment="Left" Height="499" Margin="10,10,0,0" VerticalAlignment="Top" Width="772">
             <TabItem Header="Brugere">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dgActivitiesUser" HorizontalAlignment="Left" Height="110" Margin="591,72,0,0" VerticalAlignment="Top" Width="142" ItemsSource="{Binding}"  AutoGenerateColumns="False">
+                    <DataGrid x:Name="dgActivitiesUser" HorizontalAlignment="Left" Height="143" Margin="481,154,0,0" VerticalAlignment="Top" Width="200" ItemsSource="{Binding}"  AutoGenerateColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                     x:Name="ActivityName"
@@ -26,7 +26,23 @@
                     IsReadOnly="True"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Activities" HorizontalAlignment="Left" Margin="633,30,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+                    <Label Content="Vælg Aktivitet:" HorizontalAlignment="Left" Margin="481,123,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <ComboBox x:Name="cbxUnionUser" HorizontalAlignment="Left" Margin="90,31,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="UnionName" RenderTransformOrigin="0.751,0.637"/>
+                    <Label Content="Forening:" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <DatePicker x:Name="dpDatePickerUser" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" CalendarClosed="dpDatePickerUser_CalendarClosed"/>
+                    <DataGrid x:Name="dgBookingOverviewUser" HorizontalAlignment="Left" Height="152" Margin="10,209,0,0" VerticalAlignment="Top" Width="168"/>
+                    <DatePicker x:Name="dpReservationDateUser" HorizontalAlignment="Left" Margin="586,45,0,0" VerticalAlignment="Top" Width="95"/>
+                    <TextBox x:Name="tbxReservationHourUser" HorizontalAlignment="Left" Height="23" Margin="586,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
+                    <Label Content="Reseveret fra kl:" HorizontalAlignment="Left" Margin="474,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.37,0.664" FontWeight="Bold"/>
+                    <Label Content="Reseveret Dato:" HorizontalAlignment="Left" Margin="476,40,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Button x:Name="btnAddNewReservationUser" Content="Opret Reservation" HorizontalAlignment="Left" Margin="481,302,0,0" VerticalAlignment="Top" Width="116" Height="29" FontWeight="Bold" Click="btnAddNewReservationUser_Click"/>
+                    <TextBlock x:Name="tbkErrorMessageUser" HorizontalAlignment="Left" Margin="602,306,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="87" Width="154" FontWeight="Bold" Foreground="Red"/>
+                    <Label Content="Kode:" HorizontalAlignment="Left" Margin="31,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="tbxUnionPasswordUser" HorizontalAlignment="Left" Height="23" Margin="90,62,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBlock x:Name="tbkSelectedUnionUser" HorizontalAlignment="Left" Margin="481,16,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+                    <Label Content="Reseveringstid:" HorizontalAlignment="Left" Margin="478,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.37,0.664" FontWeight="Bold"/>
+                    <TextBox x:Name="tbxReservationDurationUser" HorizontalAlignment="Left" Height="23" Margin="586,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
+                    <Label Content="I timer" HorizontalAlignment="Left" Margin="624,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.504,0.095"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Administration">
