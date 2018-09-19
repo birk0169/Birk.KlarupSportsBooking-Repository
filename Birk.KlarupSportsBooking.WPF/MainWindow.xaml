@@ -97,8 +97,47 @@
             </TabItem>
             <TabItem Header="Administration">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dgBookingOverviewAdmin" HorizontalAlignment="Left" Height="219" Margin="45,218,0,0" VerticalAlignment="Top" Width="277"/>
-                    <DataGrid x:Name="dgReservationsAdmin" HorizontalAlignment="Left" Height="219" Margin="425,218,0,0" VerticalAlignment="Top" Width="277" AutoGenerateColumns="False" ItemsSource="{Binding}">
+                    <DataGrid x:Name="dgBookingOverviewAdmin" HorizontalAlignment="Left" Height="219" Margin="45,285,0,0" VerticalAlignment="Top" Width="277" AutoGenerateColumns="False" ItemsSource="{Binding}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                x:Name="BookingActivityName"
+                                Binding="{Binding ActivityName}"
+                                Header="Aktivitets Navn"
+                                MinWidth="40"
+                                IsReadOnly="True"/>
+                            <DataGridTextColumn
+                                x:Name="BookingWekkDaye"
+                                Binding="{Binding WeekDay}"
+                                Header="Ugedag"
+                                MinWidth="10"
+                                IsReadOnly="True"/>
+                            <DataGridTextColumn
+                                x:Name="BookingHallSpace"
+                                Binding="{Binding HallSpaceUsed}"
+                                Header="Plads Brug"
+                                MinWidth="10"
+                                IsReadOnly="True"/>
+                            <DataGridTextColumn
+                                x:Name="BookingDate"
+                                Binding="{Binding DateOfBooking}"
+                                Header="Dato"
+                                MinWidth="40"
+                                IsReadOnly="True"/>
+                            <DataGridTextColumn
+                                x:Name="BookingFrom"
+                                Binding="{Binding TimeFrom}"
+                                Header="Fra"
+                                MinWidth="20"
+                                IsReadOnly="True"/>
+                            <DataGridTextColumn
+                                x:Name="BookingTo"
+                                Binding="{Binding TimeTo}"
+                                Header="Til"
+                                MinWidth="20"
+                                IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid x:Name="dgReservationsAdmin" HorizontalAlignment="Left" Height="219" Margin="425,285,0,0" VerticalAlignment="Top" Width="277" AutoGenerateColumns="False" ItemsSource="{Binding}">
                         <DataGrid.Columns>
                             <DataGridTextColumn
                                 x:Name="ReservationActivityName1"
@@ -138,23 +177,40 @@
                                 IsReadOnly="True"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Label Content="Booknings Oversigt" HorizontalAlignment="Left" Margin="45,117,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Resevations Oversigt" HorizontalAlignment="Left" Margin="425,117,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.48,0.423"/>
-                    <CheckBox x:Name="ckxSeeAllbookningsAdmin" Content="Se all bookninger" HorizontalAlignment="Left" Margin="45,148,0,0" VerticalAlignment="Top" FontWeight="Bold" IsChecked="True"/>
-                    <CheckBox x:Name="ckxSpecificDayBookingsAdmin" Content="Se bookninger fra en specific dato" HorizontalAlignment="Left" Margin="45,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <Label Content="Fra" HorizontalAlignment="Left" Margin="45,187,0,0" VerticalAlignment="Top" Width="26"/>
-                    <Label Content="Til" HorizontalAlignment="Left" Margin="193,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.864,0.615"/>
-                    <DatePicker x:Name="dpBookingFromdmin" HorizontalAlignment="Left" Margin="220,189,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.99,2.458"/>
-                    <DatePicker x:Name="dpBookingToAdmin" HorizontalAlignment="Left" Margin="79,187,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Fra" HorizontalAlignment="Left" Margin="425,185,0,0" VerticalAlignment="Top" Width="26"/>
-                    <DatePicker x:Name="dpReservationToAdmin" HorizontalAlignment="Left" Margin="456,188,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Til" HorizontalAlignment="Left" Margin="574,185,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.136,0.577"/>
-                    <DatePicker x:Name="dpReservationFromAdmin" HorizontalAlignment="Left" Margin="601,187,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.99,2.458"/>
-                    <CheckBox x:Name="ckxSpecificDayAdmin" Content="Se reservationer fra en specific dato" HorizontalAlignment="Left" Margin="425,165,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <CheckBox x:Name="ckxSeeAllReservationsAdmin" Content="Se all resevationer" HorizontalAlignment="Left" Margin="425,148,0,0" VerticalAlignment="Top" FontWeight="Bold" IsChecked="True"/>
-                    <Button x:Name="btnConfirmReservationsToBookings" Content="Opret som bookning" HorizontalAlignment="Left" Margin="425,442,0,0" VerticalAlignment="Top" Width="133"/>
-                    <TextBlock x:Name="tbkErrorMessageAdmin" HorizontalAlignment="Left" Margin="563,442,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="87" Width="154" FontWeight="Bold" Foreground="Red"/>
-                    <ComboBox x:Name="cbxAdmin" HorizontalAlignment="Left" Margin="44,21,0,0" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Booknings Oversigt" HorizontalAlignment="Left" Margin="45,181,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Resevations Oversigt" HorizontalAlignment="Left" Margin="425,181,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.48,0.423"/>
+                    <CheckBox x:Name="ckxSeeAllbookningsAdmin" Content="Se all bookninger" HorizontalAlignment="Left" Margin="44,212,0,0" VerticalAlignment="Top" FontWeight="Bold" IsChecked="True"/>
+                    <CheckBox x:Name="ckxSpecificDayBookingsAdmin" Content="Se bookninger fra en specific dato" HorizontalAlignment="Left" Margin="45,232,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label Content="Fra" HorizontalAlignment="Left" Margin="45,252,0,0" VerticalAlignment="Top" Width="26"/>
+                    <Label Content="Til" HorizontalAlignment="Left" Margin="193,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.864,0.615"/>
+                    <DatePicker x:Name="dpBookingFromdmin" HorizontalAlignment="Left" Margin="220,256,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.99,2.458"/>
+                    <DatePicker x:Name="dpBookingToAdmin" HorizontalAlignment="Left" Margin="76,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.549,2"/>
+                    <Label Content="Fra" HorizontalAlignment="Left" Margin="425,255,0,0" VerticalAlignment="Top" Width="26"/>
+                    <DatePicker x:Name="dpReservationToAdmin" HorizontalAlignment="Left" Margin="456,256,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Til" HorizontalAlignment="Left" Margin="573,254,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.136,0.577"/>
+                    <DatePicker x:Name="dpReservationFromAdmin" HorizontalAlignment="Left" Margin="600,256,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.99,2.458"/>
+                    <CheckBox x:Name="ckxSpecificDayAdmin" Content="Se reservationer fra en specific dato" HorizontalAlignment="Left" Margin="425,234,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <CheckBox x:Name="ckxSeeAllReservationsAdmin" Content="Se all resevationer" HorizontalAlignment="Left" Margin="425,212,0,0" VerticalAlignment="Top" FontWeight="Bold" IsChecked="True"/>
+                    <Button x:Name="btnConfirmReservationsToBookings" Content="Opret som bookning" HorizontalAlignment="Left" Margin="425,509,0,0" VerticalAlignment="Top" Width="133" Click="btnConfirmReservationsToBookings_Click"/>
+                    <TextBlock x:Name="tbkErrorMessageAdmin" HorizontalAlignment="Left" Margin="562,509,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="43" Width="154" FontWeight="Bold" Foreground="Red"/>
+                    <ComboBox x:Name="cbxAdmin" HorizontalAlignment="Left" Margin="44,21,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="FullName"/>
+                    <Label Content="Forenings Oprettelse" HorizontalAlignment="Left" Margin="383,21,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <TextBox x:Name="tbxUnionNameAdmin" HorizontalAlignment="Left" Height="23" Margin="425,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxUnionMailAdmin" HorizontalAlignment="Left" Height="23" Margin="425,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxUnionPasswordAdmin" HorizontalAlignment="Left" Height="23" Margin="425,108,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Forenings Navn" HorizontalAlignment="Left" Margin="327,48,0,0" VerticalAlignment="Top"/>
+                    <Label Content="E-Mail" HorizontalAlignment="Left" Margin="376,76,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Kode" HorizontalAlignment="Left" Margin="383,104,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Bynavn" HorizontalAlignment="Left" Margin="579,48,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Postnummer" HorizontalAlignment="Left" Margin="550,76,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Vejnavn" HorizontalAlignment="Left" Margin="576,104,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Husnummer" HorizontalAlignment="Left" Margin="550,134,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="tbxUnionCityAdmin" HorizontalAlignment="Left" Height="23" Margin="632,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
+                    <TextBox x:Name="tbxUnionPostnumberAdmin" HorizontalAlignment="Left" Height="23" Margin="632,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
+                    <TextBox x:Name="tbxUnionRoadNameAdmin" HorizontalAlignment="Left" Height="23" Margin="632,108,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
+                    <TextBox x:Name="tbxUnionHouseNumberAdmin" HorizontalAlignment="Left" Height="23" Margin="632,138,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="110"/>
+                    <Button x:Name="btnAddNewUnionAdmin" Content="Opret Forening" HorizontalAlignment="Left" Margin="425,140,0,0" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxAdminPassword" HorizontalAlignment="Left" Height="23" Margin="46,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
         </TabControl>

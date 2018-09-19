@@ -36,5 +36,12 @@ namespace Birk.KlarupSportsBooking.BIZ
                 Model.SaveChanges();
             }
         }
+
+        //public Union GetUnionWithMostHallUsage(DateTime weekStart)
+        //{
+        //    DateTime weekEnd = weekStart.AddDays(7);
+        //    Model.Bookings.Where(x => x.ActivityTimeFrom > weekStart).Where(x => x.ActivityTimeTo < weekEnd);
+        //    //return Model.Bookings.Where(x => x.ActivityTimeFrom > weekStart).Where(y => y.ActivityTimeTo < weekEnd)
+        //}
     }
 }

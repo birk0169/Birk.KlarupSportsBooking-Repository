@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E32060A5-1DEF-4A84-93EF-4C80AAB909EA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Birk.KlarupSportsBooking.DAL</RootNamespace>
-    <AssemblyName>Birk.KlarupSportsBooking.DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <ProjectGuid>{2A972B8D-2EB3-419A-A48C-6403C35F30A2}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Birk.KlarupSportsBooking.Server</RootNamespace>
+    <AssemblyName>Birk.KlarupSportsBooking.Server</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,17 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,27 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EF\Activity.cs" />
-    <Compile Include="EF\Address.cs" />
-    <Compile Include="EF\Admin.cs" />
-    <Compile Include="EF\Booking.cs" />
-    <Compile Include="EF\Fixed.cs" />
-    <Compile Include="EF\KlarupSportsBookingModel.cs" />
-    <Compile Include="EF\Reservation.cs" />
-    <Compile Include="EF\Union.cs" />
-    <Compile Include="EF\UnionLeader.cs" />
-    <Compile Include="PartialEntities\Activity.cs" />
-    <Compile Include="PartialEntities\Address.cs" />
-    <Compile Include="PartialEntities\Admin.cs" />
-    <Compile Include="PartialEntities\Booking.cs" />
-    <Compile Include="PartialEntities\Reservation.cs" />
-    <Compile Include="PartialEntities\Union.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Birk.KlarupSportsBooking.BIZ\Birk.KlarupSportsBooking.BIZ.csproj">
+      <Project>{4e729548-d2c7-4b8d-8ac9-23390b02d49a}</Project>
+      <Name>Birk.KlarupSportsBooking.BIZ</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Birk.KlarupSportsBooking.DAL\Birk.KlarupSportsBooking.DAL.csproj">
+      <Project>{e32060a5-1def-4a84-93ef-4c80aab909ea}</Project>
+      <Name>Birk.KlarupSportsBooking.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
