@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Birk.KlarupSportsBooking.BI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Birk.KlarupSportsBooking.WPF", "Birk.KlarupSportsBooking.WPF\Birk.KlarupSportsBooking.WPF.csproj", "{7527EA1E-B011-4000-8405-2DCBD524F89F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Birk.KlarupSportsBooking.Server", "Birk.KlarupSportsBooking.Server\Birk.KlarupSportsBooking.Server.csproj", "{2A972B8D-2EB3-419A-A48C-6403C35F30A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7527EA1E-B011-4000-8405-2DCBD524F89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7527EA1E-B011-4000-8405-2DCBD524F89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7527EA1E-B011-4000-8405-2DCBD524F89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A972B8D-2EB3-419A-A48C-6403C35F30A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A972B8D-2EB3-419A-A48C-6403C35F30A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A972B8D-2EB3-419A-A48C-6403C35F30A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A972B8D-2EB3-419A-A48C-6403C35F30A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
