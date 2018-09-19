@@ -29,8 +29,7 @@
                     <Label Content="Vælg Aktivitet:" HorizontalAlignment="Left" Margin="481,123,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
                     <ComboBox x:Name="cbxUnionUser" HorizontalAlignment="Left" Margin="90,31,0,0" VerticalAlignment="Top" Width="120" DisplayMemberPath="UnionName" RenderTransformOrigin="0.751,0.637"/>
                     <Label Content="Forening:" HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <DatePicker x:Name="dpDatePickerUser" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" CalendarClosed="dpDatePickerUser_CalendarClosed"/>
-                    <DataGrid x:Name="dgBookingOverviewUser" HorizontalAlignment="Left" Height="152" Margin="10,209,0,0" VerticalAlignment="Top" Width="168"/>
+                    <DatePicker x:Name="dpReservationFromUser" HorizontalAlignment="Left" Margin="41,181,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.775,0.5"/>
                     <DatePicker x:Name="dpReservationDateUser" HorizontalAlignment="Left" Margin="586,45,0,0" VerticalAlignment="Top" Width="95"/>
                     <TextBox x:Name="tbxReservationHourUser" HorizontalAlignment="Left" Height="23" Margin="586,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
                     <Label Content="Reseveret fra kl:" HorizontalAlignment="Left" Margin="474,71,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.37,0.664" FontWeight="Bold"/>
@@ -38,7 +37,7 @@
                     <Button x:Name="btnAddNewReservationUser" Content="Opret Reservation" HorizontalAlignment="Left" Margin="481,302,0,0" VerticalAlignment="Top" Width="116" Height="29" FontWeight="Bold" Click="btnAddNewReservationUser_Click"/>
                     <TextBlock x:Name="tbkErrorMessageUser" HorizontalAlignment="Left" Margin="602,306,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="87" Width="154" FontWeight="Bold" Foreground="Red"/>
                     <Label Content="Kode:" HorizontalAlignment="Left" Margin="31,58,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-                    <TextBox x:Name="tbxUnionPasswordUser" HorizontalAlignment="Left" Height="23" Margin="90,62,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="tbxUnionPasswordUser" HorizontalAlignment="Left" Height="23" Margin="90,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <TextBlock x:Name="tbkSelectedUnionUser" HorizontalAlignment="Left" Margin="481,16,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
                     <Label Content="Reseveringstid:" HorizontalAlignment="Left" Margin="478,97,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.37,0.664" FontWeight="Bold"/>
                     <TextBox x:Name="tbxReservationDurationUser" HorizontalAlignment="Left" Height="23" Margin="586,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="33"/>
@@ -48,6 +47,47 @@
                     <Label Content="Slut periode" HorizontalAlignment="Left" Margin="303,225,0,0" VerticalAlignment="Top"/>
                     <DatePicker x:Name="dpFixedReservationStartUser" HorizontalAlignment="Left" Margin="386,195,0,0" VerticalAlignment="Top" Width="75"/>
                     <DatePicker x:Name="dpFixedReservationEndUser" HorizontalAlignment="Left" Margin="386,227,0,0" VerticalAlignment="Top" Width="75"/>
+                    <DataGrid x:Name="dgReservationsUser" HorizontalAlignment="Left" Height="219" Margin="10,209,0,0" VerticalAlignment="Top" Width="277" AutoGenerateColumns="False" ItemsSource="{Binding}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                    x:Name="ReservationActivityName"
+                    Binding="{Binding ReservationActivityName}"
+                    Header="Aktivitets Navn"
+                    MinWidth="40"
+                    IsReadOnly="True"/>
+                            <DataGridTextColumn
+                    x:Name="WeekDay"
+                    Binding="{Binding WeekDay}"
+                    Header="Ugedag"
+                    MinWidth="40"
+                    IsReadOnly="True"/>
+                            <DataGridTextColumn
+                    x:Name="ReservatonDate"
+                    Binding="{Binding DateOfReservation}"
+                    Header="Dato"
+                    MinWidth="40"
+                    IsReadOnly="True"/>
+                            <DataGridTextColumn
+                    x:Name="TimeFrom"
+                    Binding="{Binding HourFrom}"
+                    Header="Fra kl"
+                    MinWidth="40"
+                    IsReadOnly="True"/>
+                            <DataGridTextColumn
+                    x:Name="TimeTo"
+                    Binding="{Binding HourTo}"
+                    Header="Til kl"
+                    MinWidth="40"
+                    IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <CheckBox x:Name="ckxSeeAllReservationsUser" Content="Se all resevationer" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" FontWeight="Bold" IsChecked="True" Click="ckxSeeAllReservationsUser_Click"/>
+                    <CheckBox x:Name="ckxSpecificDayUser" Content="Se reservationer fra en specific dato" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" FontWeight="Bold" Click="ckxSpecificDayUser_Click"/>
+                    <DatePicker x:Name="dpReservationToUser" HorizontalAlignment="Left" Margin="185,180,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Fra" HorizontalAlignment="Left" Margin="10,179,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Til" HorizontalAlignment="Left" Margin="158,178,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.136,0.577"/>
+                    <Button x:Name="btnCheckUserPassword" Content="Check" HorizontalAlignment="Left" Margin="90,90,0,0" VerticalAlignment="Top" Width="75" Click="btnCheckUserPassword_Click"/>
+                    <TextBlock x:Name="tbkUnionPasswordResultUser" HorizontalAlignment="Left" Margin="170,92,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" RenderTransformOrigin="0.388,0.438"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Administration">

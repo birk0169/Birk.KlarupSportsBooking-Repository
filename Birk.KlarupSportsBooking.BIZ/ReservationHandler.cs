@@ -19,6 +19,28 @@ namespace Birk.KlarupSportsBooking.BIZ
             return Model.Reservations.ToList();
         }
 
+        /// <summary>
+        /// Returns all the reservations of a specific day
+        /// </summary>
+        /// <param name="day"></param>
+        /// <returns></returns>
+        public List<Reservation> GetReservationsOfDay(DateTime day)
+        {
+            DateTime endDay = day.AddHours(24);
+            return Model.Reservations.Where(x => x.ReservationFrom > day).Where(y => y.ReservationFrom < endDay).ToList();
+        }
+
+        /// <summary>
+        /// Returns all reservations within the time frame
+        /// </summary>
+        /// <param name="timeStart">Begnning of time frame</param>
+        /// <param name="timeEnd">End of time frame</param>
+        /// <returns></returns>
+        public List<Reservation> GetReservationsWithinTimeFrame(DateTime timeStart, DateTime timeEnd)
+        {
+            return Model.Reservations.Where(x => x.ReservationFrom > timeStart).Where(y => y.ReservationFrom < timeEnd).ToList();
+        }
+
         //Add
         /// <summary>
         /// Adds a reservation to the DB

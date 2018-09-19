@@ -31,16 +31,18 @@ namespace Birk.KlarupSportsBooking.WPF
             InitializeComponent();
             cbxUnionUser.ItemsSource = unionHandler.GetAllUnions();
             dgActivitiesUser.ItemsSource = activityHandler.GetAllActivities();
+
+            dgReservationsUser.ItemsSource = reservationHandler.GetAlllReservation();
         }
 
-        private void dpDatePickerUser_CalendarClosed(object sender, RoutedEventArgs e)
-        {
-            if (DateTime.TryParse(dpDatePickerUser.Text, out DateTime time))
-            {
-                dgBookingOverviewUser.ItemsSource = bookingHandler.GetAllBookingSpecificDate(DateTime.Parse(dpDatePickerUser.Text));
-            }
+        //private void dpDatePickerUser_CalendarClosed(object sender, RoutedEventArgs e)
+        //{
+        //    if (DateTime.TryParse(dpDatePickerUser.Text, out DateTime time))
+        //    {
+        //        dgBookingOverviewUser.ItemsSource = bookingHandler.GetAllBookingSpecificDate(DateTime.Parse(dpDatePickerUser.Text));
+        //    }
             
-        }
+        //}
 
         public void ResetReservationUser()
         {
@@ -140,9 +142,57 @@ namespace Birk.KlarupSportsBooking.WPF
                     tbkErrorMessageUser.Text = "Tiden er fokert: Hallen har åbent fra 8 til 22 i hverdagene og fra 9 til 21 i weekenderne";
                 }
             }
-            
-
-            //End
         }
+
+        private void btnCheckUserPassword_Click(object sender, RoutedEventArgs e)
+        {
+            if ((cbxUnionUser.SelectedItem as Union).Password == tbxUnionPasswordUser.Text)
+            {
+                tbkUnionPasswordResultUser.Text = "Godkendt";
+            }
+            else
+            {
+                tbkUnionPasswordResultUser.Text = "Ikke Godkendt";
+            }
+        }
+
+        private void ckxSeeAllReservationsUser_Click(object sender, RoutedEventArgs e)
+        {
+            CheckAndSetBoxesForReservationOverview();
+        }
+
+        private void ckxSpecificDayUser_Click(object sender, RoutedEventArgs e)
+        {
+            CheckAndSetBoxesForReservationOverview();
+        }
+
+        //Method
+        public void CheckAndSetBoxesForReservationOverview()
+        {
+            if (ckxSeeAllReservationsUser.IsChecked == true)
+            {
+                dgReservationsUser.ItemsSource = reservationHandler.GetAlllReservation();
+            }
+            else if (ckxSpecificDayUser.IsChecked == true)
+            {
+                if (DateTime.TryParse(dpReservationFromUser.Text, out DateTime dateTime))
+                {
+                    dgReservationsUser.ItemsSource = reservationHandler.GetReservationsOfDay(DateTime.Parse(dpReservationFromUser.Text));
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                if (DateTime.TryParse(dpReservationFromUser.Text, out DateTime dateTime) && DateTime.TryParse(dpReservationToUser.Text, out dateTime))
+                {
+                    dgReservationsUser.ItemsSource = reservationHandler.GetReservationsWithinTimeFrame(DateTime.Parse(dpReservationFromUser.Text), DateTime.Parse(dpReservationToUser.Text));
+                }
+            }
+        }
+
+        //End
     }
 }
