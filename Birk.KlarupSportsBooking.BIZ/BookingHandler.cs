@@ -41,7 +41,11 @@ namespace Birk.KlarupSportsBooking.BIZ
         public void AddBookingsToDB(Reservation reservation, Admin admin)
         {
             //Ceck for nulls
-            if (reservation == null || (reservation.Union == null && reservation.UnionId == 0))
+            if (reservation.Id == 0)
+            {
+                throw new ArgumentNullException();
+            }
+            else if (reservation == null || (reservation.Union == null && reservation.UnionId == 0))
             {
                 throw new ArgumentNullException();
             }
