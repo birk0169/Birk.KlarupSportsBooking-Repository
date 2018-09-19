@@ -24,6 +24,7 @@ namespace Birk.KlarupSportsBooking.WPF
     {
         private ActivityHandler activityHandler = new ActivityHandler();
         private UnionHandler unionHandler = new UnionHandler();
+        private AdminHandler adminHandler = new AdminHandler();
         private BookingHandler bookingHandler = new BookingHandler();
         private ReservationHandler reservationHandler = new ReservationHandler();
         public MainWindow()
@@ -31,6 +32,10 @@ namespace Birk.KlarupSportsBooking.WPF
             InitializeComponent();
             cbxUnionUser.ItemsSource = unionHandler.GetAllUnions();
             dgActivitiesUser.ItemsSource = activityHandler.GetAllActivities();
+
+            cbxAdmin.ItemsSource = adminHandler.GetAllAdmins();
+            dgReservationsAdmin.ItemsSource = reservationHandler.GetAlllReservation();
+            dgBookingOverviewAdmin.ItemsSource = bookingHandler.GetAllBookings();
 
             dgReservationsUser.ItemsSource = reservationHandler.GetAlllReservation();
         }
@@ -129,7 +134,9 @@ namespace Birk.KlarupSportsBooking.WPF
                         //Adds reservation to the database
                         reservationHandler.AddReservationToDB(newReservation);
                         ResetReservationUser();
-                        
+                        CheckAndSetBoxesForReservationOverview();
+
+
                     }
                     catch
                     {
@@ -179,10 +186,6 @@ namespace Birk.KlarupSportsBooking.WPF
                 {
                     dgReservationsUser.ItemsSource = reservationHandler.GetReservationsOfDay(DateTime.Parse(dpReservationFromUser.Text));
                 }
-                else
-                {
-
-                }
             }
             else
             {
@@ -191,6 +194,24 @@ namespace Birk.KlarupSportsBooking.WPF
                     dgReservationsUser.ItemsSource = reservationHandler.GetReservationsWithinTimeFrame(DateTime.Parse(dpReservationFromUser.Text), DateTime.Parse(dpReservationToUser.Text));
                 }
             }
+        }
+
+        private void btnConfirmReservationsToBookings_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbxAdmin.SelectedItem == null)
+            {
+
+            }
+            else if (dgReservationsAdmin.SelectedItem == null)
+            {
+
+            }
+            else
+            {
+                bookingHandler.AddBookingsToDB(dgReservationsAdmin.SelectedItem as Reservation, cbxAdmin.SelectedItem as Admin);
+                dgBookingOverviewAdmin.ItemsSource = bookingHandler.GetAllBookings();
+            }
+            
         }
 
         //End

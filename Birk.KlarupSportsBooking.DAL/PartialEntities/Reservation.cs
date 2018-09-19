@@ -60,6 +60,9 @@ namespace Birk.KlarupSportsBooking.DAL.EF
             }
         }
 
+        /// <summary>
+        /// A property that gets the time the activity starts in hours
+        /// </summary>
         public string HourFrom
         {
             get
@@ -68,6 +71,9 @@ namespace Birk.KlarupSportsBooking.DAL.EF
             }
         }
 
+        /// <summary>
+        /// A property that gets the time the activity ends in hours
+        /// </summary>
         public string HourTo
         {
             get

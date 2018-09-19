@@ -7,7 +7,7 @@ using Birk.KlarupSportsBooking.DAL.EF;
 
 namespace Birk.KlarupSportsBooking.BIZ
 {
-    class AdminHandler : BaseHandler
+    public class AdminHandler : BaseHandler
     {
         //Get
         /// <summary>
